@@ -1,9 +1,10 @@
-import { store } from "@/redux/store";
-import { useSelector } from "react-redux";
-import { lightColors } from "@/constants/colors/lightColors";
 import { darkColors } from "@/constants/colors/darkColors";
+import { lightColors } from "@/constants/colors/lightColors";
+import { store } from "@/redux/store";
+import { ThemeType, updateThemeAction } from "@/redux/themeSlice/themeSlice";
 import { useMemo } from "react";
 import { useColorScheme } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
 const themeSelector = (state: ReturnType<typeof store.getState>) =>
   state.theme.value;
@@ -28,4 +29,17 @@ const useColors = () => {
   return colors;
 };
 
-export { useColors };
+const useUpdateTheme = (newTheme: ThemeType) => {
+  const dispatch = useDispatch();
+
+  const updateTheme = () => {
+    dispatch(updateThemeAction(newTheme));
+  };
+
+  return {
+    updateTheme,
+  };
+};
+
+export { useColors, useUpdateTheme };
+
