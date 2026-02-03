@@ -1,11 +1,14 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Tabs } from "expo-router";
+import { useColors } from "@/hooks/colors";
 
 export default function TabLayout() {
+  const colors = useColors();
+
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "green",
+        tabBarActiveTintColor: colors.primary,
         headerShown: false,
       }}
     >
@@ -25,6 +28,16 @@ export default function TabLayout() {
           title: "Explore",
           tabBarIcon: ({ color }) => (
             <MaterialIcons color={color} size={28} name={"send"} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: "Settings",
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons color={color} size={28} name={"settings"} />
           ),
         }}
       />

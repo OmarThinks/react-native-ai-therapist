@@ -24,6 +24,7 @@ const useColors = () => {
     if (theme === "system") {
       return systemTheme === "dark" ? darkColors : lightColors;
     }
+    return darkColors;
   }, [theme, systemTheme]);
 
   return colors;
@@ -42,4 +43,3 @@ const useUpdateTheme = (newTheme: ThemeType) => {
 };
 
 export { useColors, useUpdateTheme };
-
