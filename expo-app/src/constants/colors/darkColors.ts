@@ -1,4 +1,4 @@
-import type { ThemeColorsType } from "../colors/ThemeColorsType";
+import type { ThemeColorsType } from "./ThemeColorsType";
 
 const darkColors: ThemeColorsType = {
   primary: "#1E90FF",
