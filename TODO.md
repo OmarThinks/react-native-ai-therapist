@@ -5,4 +5,5 @@
 - Fix Layout ✅
 - Add Redux
 - Add Native Wind
+- colors
 - a
