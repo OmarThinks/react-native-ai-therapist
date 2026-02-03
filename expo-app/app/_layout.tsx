@@ -2,9 +2,9 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
 
-export default function RootLayout() {
+function RootLayout() {
   return (
-    <View>
+    <View style={{ flex: 1, alignSelf: "stretch" }}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
@@ -12,3 +12,5 @@ export default function RootLayout() {
     </View>
   );
 }
+
+export default RootLayout;
