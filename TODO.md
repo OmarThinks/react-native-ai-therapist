@@ -1,7 +1,8 @@
 # TODO List:
 
-- Add Native Wind
-- create a setting tab
+- Create a useAppSelector ✅
+- Create a useAppDispatch ✅
+- create a useColors hook, that reads from the Redux state, and gets the color right
 - Enable the setting tab to change the theme
 - install Async Storage (Or any new expo update)
 - Check if anything is new with redux perstent storage?
