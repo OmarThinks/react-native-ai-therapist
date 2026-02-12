@@ -2,7 +2,7 @@ import type { ThemeColorsType } from "./ThemeColorsType";
 
 const darkColors: ThemeColorsType = {
   primary: "#1E90FF",
-  secondary: "#FF69B4",
+  secondary: "#32CD32",
   background: "#121212",
   text: "#FFFFFF",
   border: "#272727",
