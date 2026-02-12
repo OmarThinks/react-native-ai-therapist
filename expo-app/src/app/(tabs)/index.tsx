@@ -60,7 +60,7 @@ function App() {
       style={{ backgroundColor: colors.background }}
     >
       <View className=" flex-1 px-2 self-stretch">
-        <ScrollView className=" flex-1 self-stretch">
+        <ScrollView className=" flex-1 self-stretch" style={{ gap: 8 }}>
           {messages.map((message) => (
             <ChatMessageDisplay key={message.id} message={message} />
           ))}

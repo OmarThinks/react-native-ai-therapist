@@ -7,8 +7,14 @@ const ChatMessageDisplay = ({ message }: { message: UIMessage }) => {
   const colors = useColors();
 
   return (
-    <View key={message.id} style={{ marginVertical: 8 }}>
-      <View>
+    <View
+      key={message.id}
+      style={{
+        maxWidth: "80%",
+        alignSelf: message.role === "user" ? "flex-end" : "flex-start",
+      }}
+    >
+      <View style={{ marginVertical: 8 }}>
         <Text style={{ fontWeight: 700, color: colors.text }}>
           {message.role}
         </Text>

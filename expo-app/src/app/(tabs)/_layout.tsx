@@ -9,7 +9,7 @@ function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.secondary,
+        tabBarInactiveTintColor: colors.grey,
         tabBarStyle: { backgroundColor: colors.card },
         headerShown: false,
       }}
