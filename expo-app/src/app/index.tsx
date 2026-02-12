@@ -1,15 +1,22 @@
-import { Text, View } from "react-native";
+import { useColors } from "@/hooks/colors";
+import { Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
+  const colors = useColors();
+
   return (
-    <View
+    <SafeAreaView
       style={{
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: colors.background,
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+      <Text style={{ color: colors.text }}>
+        Edit app/index.tsx to edit this screen.
+      </Text>
+    </SafeAreaView>
   );
 }

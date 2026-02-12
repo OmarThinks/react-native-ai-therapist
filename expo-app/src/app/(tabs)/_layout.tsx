@@ -19,7 +19,6 @@ function TabLayout() {
         options={{
           title: "Home",
           tabBarIcon: ({ color, focused }) => {
-            console.log("Rendering Home Icon with color:", color, focused);
             return <MaterialIcons color={color} size={28} name={"home"} />;
           },
         }}

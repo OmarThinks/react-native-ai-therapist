@@ -1,7 +1,6 @@
 import { useColors } from "@/hooks/colors";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
-import type { ThemeType } from "@/redux/themeSlice/themeSlice";
-import { updateThemeAction } from "@/redux/themeSlice/themeSlice";
+import { ThemeTypeEnum, updateThemeAction } from "@/redux/themeSlice/themeSlice";
 import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -24,9 +23,9 @@ const Settings = () => {
         </Text>
 
         <View className="gap-4 mt-4 self-stretch">
-          <ThemeSelectorCard themeType="light" text="Light" />
-          <ThemeSelectorCard themeType="dark" text="Dark" />
-          <ThemeSelectorCard themeType="system" text="System" />
+          <ThemeSelectorCard themeType={ThemeTypeEnum.Light} text="Light" />
+          <ThemeSelectorCard themeType={ThemeTypeEnum.Dark} text="Dark" />
+          <ThemeSelectorCard themeType={ThemeTypeEnum.System} text="System" />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -37,7 +36,7 @@ const ThemeSelectorCard = ({
   text,
   themeType,
 }: {
-  themeType: ThemeType;
+  themeType: ThemeTypeEnum;
   text: string;
 }) => {
   const activeTheme = useAppSelector((state) => state.theme.value);

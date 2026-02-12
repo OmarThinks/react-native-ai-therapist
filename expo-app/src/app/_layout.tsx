@@ -1,11 +1,11 @@
+import "@/global.css";
+import { useColors, useIsThemeLightOrDark } from "@/hooks/colors";
+import { useInitializeApp } from "@/hooks/useInitializeApp";
+import { store } from "@/redux/store";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { ActivityIndicator, View } from "react-native";
 import { Provider } from "react-redux";
-import { store } from "@/redux/store";
-import "@/global.css";
-import { useInitializeApp } from "@/hooks/useInitializeApp";
-import { useColors, useIsThemeLightOrDark } from "@/hooks/colors";
 
 const AppInsideRedux = () => {
   const { isAppInitialized } = useInitializeApp();
