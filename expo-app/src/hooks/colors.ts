@@ -45,4 +45,25 @@ const useUpdateTheme = () => {
   };
 };
 
-export { useColors, useUpdateTheme };
+const useIsThemeLightOrDark = () => {
+  const theme = useSelector(themeSelector);
+
+  const systemTheme = useColorScheme();
+
+  const isLightOrDark = useMemo(() => {
+    if (theme === ThemeTypeEnum.Light) {
+      return true;
+    }
+    if (theme === ThemeTypeEnum.Dark) {
+      return false;
+    }
+    if (theme === ThemeTypeEnum.System) {
+      return systemTheme === "light" ? true : false;
+    }
+    return false;
+  }, [theme, systemTheme]);
+
+  return isLightOrDark;
+};
+
+export { useColors, useUpdateTheme, useIsThemeLightOrDark };

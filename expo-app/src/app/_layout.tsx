@@ -5,9 +5,11 @@ import { Provider } from "react-redux";
 import { store } from "@/redux/store";
 import "@/global.css";
 import { useInitializeApp } from "@/hooks/useInitializeApp";
+import { useIsThemeLightOrDark } from "@/hooks/colors";
 
 const AppInsideRedux = () => {
   const { isAppInitialized } = useInitializeApp();
+  const isThemeLightOrDark = useIsThemeLightOrDark();
 
   if (!isAppInitialized) {
     return (
@@ -23,7 +25,7 @@ const AppInsideRedux = () => {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
-      <StatusBar style="auto" />
+      <StatusBar style={isThemeLightOrDark ? "dark" : "light"} />
     </View>
   );
 };
