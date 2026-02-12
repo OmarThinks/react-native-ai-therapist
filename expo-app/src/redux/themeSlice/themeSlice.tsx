@@ -3,21 +3,26 @@ import { createSlice } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AsyncStorageKeysEnum } from "@/constants/AsyncStorageKeysEnum";
 
-type ThemeType = "light" | "dark" | "system";
+enum ThemeTypeEnum {
+  Light = "light",
+  Dark = "dark",
+  System = "system",
+}
+
 
 interface ThemeState {
-  value: ThemeType;
+  value: ThemeTypeEnum;
 }
 
 const initialState: ThemeState = {
-  value: "dark",
+  value: ThemeTypeEnum.Dark,
 };
 
 const themeSlice = createSlice({
   name: "theme",
   initialState,
   reducers: {
-    updateThemeAction: (state, action: PayloadAction<ThemeType>) => {
+    updateThemeAction: (state, action: PayloadAction<ThemeTypeEnum>) => {
       state.value = action.payload;
       AsyncStorage.setItem(AsyncStorageKeysEnum.THEME, action.payload);
     },
@@ -28,4 +33,4 @@ const themeSlice = createSlice({
 const { updateThemeAction } = themeSlice.actions;
 
 export { themeSlice, updateThemeAction };
-export type { ThemeType };
+export { ThemeTypeEnum };
