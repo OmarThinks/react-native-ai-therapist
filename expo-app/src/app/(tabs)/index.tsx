@@ -1,13 +1,20 @@
+import { useColors } from "@/hooks/colors";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { fetch as expoFetch } from "expo/fetch";
 import { useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import type { ModelMessage, UIMessage } from "ai";
+import ChatMessageDisplay from "@/components/ChatMessageDisplay";
 
 function App() {
   const [input, setInput] = useState("");
-  const { messages, error, sendMessage } = useChat({
+  const {
+    messages: _messages,
+    error,
+    sendMessage,
+  } = useChat({
     transport: new DefaultChatTransport({
       fetch: expoFetch as unknown as typeof globalThis.fetch,
       api: "http://10.0.2.2:3000/api/chat",
@@ -41,31 +48,21 @@ function App() {
     ],
   });
 
+  const messages: UIMessage[] = _messages;
+
+  const colors = useColors();
+
   if (error) return <Text>{error.message}</Text>;
 
   return (
-    <SafeAreaView style={{ height: "100%" }}>
-      <View
-        style={{
-          height: "95%",
-          display: "flex",
-          flexDirection: "column",
-          paddingHorizontal: 8,
-        }}
-      >
+    <SafeAreaView
+      className=" self-stretch flex-1"
+      style={{ backgroundColor: colors.background }}
+    >
+      <View className=" flex-1 px-2 self-stretch">
         <ScrollView style={{ flex: 1 }}>
-          {messages.map((m) => (
-            <View key={m.id} style={{ marginVertical: 8 }}>
-              <View>
-                <Text style={{ fontWeight: 700 }}>{m.role}</Text>
-                {m.parts.map((part, i) => {
-                  switch (part.type) {
-                    case "text":
-                      return <Text key={`${m.id}-${i}`}>{part.text}</Text>;
-                  }
-                })}
-              </View>
-            </View>
+          {messages.map((message) => (
+            <ChatMessageDisplay key={message.id} message={message} />
           ))}
         </ScrollView>
 
