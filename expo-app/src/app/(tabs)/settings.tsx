@@ -3,7 +3,8 @@ import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import type { ThemeType } from "@/redux/themeSlice/themeSlice";
-import { useAppSelector } from "@/redux/store";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { updateThemeAction } from "@/redux/themeSlice/themeSlice";
 
 const Settings = () => {
   const colors = useColors();
@@ -45,6 +46,11 @@ const ThemeSelectorCard = ({
 
   const colors = useColors();
 
+  const dispatch = useAppDispatch();
+  const onPress = () => {
+    dispatch(updateThemeAction(themeType));
+  };
+
   return (
     <TouchableOpacity
       className=" self-stretch border-[1] rounded-[8px] px-3 py-4 flex-row items-center gap-4 flex-wrap"
@@ -53,6 +59,7 @@ const ThemeSelectorCard = ({
         //padding: 16,
         borderWidth: 4,
       }}
+      onPress={onPress}
     >
       <Text style={{ color: colors.text }} className=" text-[24px]">
         {text}
