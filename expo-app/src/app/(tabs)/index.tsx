@@ -1,12 +1,12 @@
+import ChatMessageDisplay from "@/components/ChatMessageDisplay";
 import { useColors } from "@/hooks/colors";
 import { useChat } from "@ai-sdk/react";
+import type { UIMessage } from "ai";
 import { DefaultChatTransport } from "ai";
 import { fetch as expoFetch } from "expo/fetch";
 import { useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import type { ModelMessage, UIMessage } from "ai";
-import ChatMessageDisplay from "@/components/ChatMessageDisplay";
 
 function App() {
   const [input, setInput] = useState("");
@@ -60,7 +60,7 @@ function App() {
       style={{ backgroundColor: colors.background }}
     >
       <View className=" flex-1 px-2 self-stretch">
-        <ScrollView style={{ flex: 1 }}>
+        <ScrollView className=" flex-1 self-stretch">
           {messages.map((message) => (
             <ChatMessageDisplay key={message.id} message={message} />
           ))}
@@ -68,8 +68,16 @@ function App() {
 
         <View style={{ marginTop: 8 }}>
           <TextInput
-            style={{ backgroundColor: "white", padding: 8 }}
+            style={{
+              backgroundColor: colors.background,
+              padding: 8,
+              color: colors.text,
+              borderWidth: 1,
+              borderColor: colors.border,
+              borderRadius: 4,
+            }}
             placeholder="Say something..."
+            placeholderTextColor={colors.grey}
             value={input}
             onChange={(e) => setInput(e.nativeEvent.text)}
             onSubmitEditing={(e) => {

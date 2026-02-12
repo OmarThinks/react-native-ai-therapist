@@ -5,6 +5,7 @@ type ThemeColorsType = {
   text: string;
   border: string;
   card: string;
+  grey: string;
 };
 
 export type { ThemeColorsType };

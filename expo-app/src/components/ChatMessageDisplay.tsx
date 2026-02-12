@@ -1,7 +1,7 @@
-import { View, Text } from "react-native";
-import React from "react";
-import { UIDataTypes, UIMessage, UITools } from "ai";
 import { useColors } from "@/hooks/colors";
+import { UIMessage } from "ai";
+import React from "react";
+import { Text, View } from "react-native";
 
 const ChatMessageDisplay = ({ message }: { message: UIMessage }) => {
   const colors = useColors();
