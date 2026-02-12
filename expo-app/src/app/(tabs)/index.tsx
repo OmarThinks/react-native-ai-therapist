@@ -1,4 +1,3 @@
-import { generateAPIUrl } from "@/utils/generateAPIUrl";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { fetch as expoFetch } from "expo/fetch";
@@ -41,8 +40,6 @@ function App() {
       },
     ],
   });
-
-  console.log(JSON.stringify(messages, null, 2));
 
   if (error) return <Text>{error.message}</Text>;
 
