@@ -1,5 +1,7 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AsyncStorageKeysEnum } from "@/constants/AsyncStorageKeysEnum";
 
 type ThemeType = "light" | "dark" | "system";
 
@@ -17,6 +19,7 @@ const themeSlice = createSlice({
   reducers: {
     updateThemeAction: (state, action: PayloadAction<ThemeType>) => {
       state.value = action.payload;
+      AsyncStorage.setItem(AsyncStorageKeysEnum.THEME, action.payload);
     },
   },
 });
