@@ -1,10 +1,10 @@
 import { useColors } from "@/hooks/colors";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
+import type { ThemeType } from "@/redux/themeSlice/themeSlice";
+import { updateThemeAction } from "@/redux/themeSlice/themeSlice";
 import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import type { ThemeType } from "@/redux/themeSlice/themeSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/store";
-import { updateThemeAction } from "@/redux/themeSlice/themeSlice";
 
 const Settings = () => {
   const colors = useColors();
@@ -56,15 +56,33 @@ const ThemeSelectorCard = ({
       className=" self-stretch border-[1] rounded-[8px] px-3 py-4 flex-row items-center gap-4 flex-wrap"
       style={{
         borderColor: isActive ? colors.primary : colors.border,
-        //padding: 16,
         borderWidth: 4,
       }}
       onPress={onPress}
     >
+      <IsActiveRadioButton isActive={isActive} />
+
       <Text style={{ color: colors.text }} className=" text-[24px]">
         {text}
       </Text>
     </TouchableOpacity>
+  );
+};
+
+const IsActiveRadioButton = ({ isActive }: { isActive: boolean }) => {
+  const colors = useColors();
+  return (
+    <View
+      className="w-[24px] h-[24px] border-[1] items-center justify-center"
+      style={{ borderColor: isActive? colors.primary: colors.border, borderWidth: 2, borderRadius: 30 }}
+    >
+      {isActive && (
+        <View
+          className="w-[12px] h-[12px] rounded-full"
+          style={{ backgroundColor: colors.primary }}
+        />
+      )}
+    </View>
   );
 };
 
