@@ -5,23 +5,33 @@ import { Provider } from "react-redux";
 import { store } from "@/redux/store";
 import "@/global.css";
 import { useInitializeApp } from "@/hooks/useInitializeApp";
-import { useIsThemeLightOrDark } from "@/hooks/colors";
+import { useColors, useIsThemeLightOrDark } from "@/hooks/colors";
 
 const AppInsideRedux = () => {
   const { isAppInitialized } = useInitializeApp();
   const isThemeLightOrDark = useIsThemeLightOrDark();
+  const colors = useColors();
 
   if (!isAppInitialized) {
     return (
       <ActivityIndicator
         size="large"
-        style={{ flex: 1, alignSelf: "center" }}
+        style={{
+          flex: 1,
+          alignSelf: "stretch",
+          backgroundColor: colors.background,
+        }}
       />
     );
   }
 
   return (
-    <View style={{ flex: 1, alignSelf: "stretch" }}>
+    <View
+      style={{
+        flex: 1,
+        alignSelf: "stretch",
+      }}
+    >
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>

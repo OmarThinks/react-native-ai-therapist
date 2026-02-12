@@ -6,6 +6,7 @@ const lightColors: ThemeColorsType = {
   background: "#FFFFFF",
   text: "#000000",
   border: "#E0E0E0",
+  card: "#F8F8F8",
 };
 
 export { lightColors };

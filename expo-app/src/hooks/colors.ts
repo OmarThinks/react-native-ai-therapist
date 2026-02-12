@@ -1,6 +1,6 @@
 import { darkColors } from "@/constants/colors/darkColors";
 import { lightColors } from "@/constants/colors/lightColors";
-import { store } from "@/redux/store";
+import { RootState, store, useAppSelector } from "@/redux/store";
 import {
   ThemeTypeEnum,
   updateThemeAction,
@@ -13,7 +13,7 @@ const themeSelector = (state: ReturnType<typeof store.getState>) =>
   state.theme.value;
 
 const useColors = () => {
-  const theme = useSelector(themeSelector);
+  const theme = useSelector((state: RootState) => state.theme.value);
 
   const systemTheme = useColorScheme();
 

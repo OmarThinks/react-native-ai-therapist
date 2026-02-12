@@ -1,14 +1,16 @@
+import { useColors } from "@/hooks/colors";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Tabs } from "expo-router";
-import { useColors } from "@/hooks/colors";
 
-export default function TabLayout() {
+function TabLayout() {
   const colors = useColors();
 
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.secondary,
+        tabBarStyle: { backgroundColor: colors.card },
         headerShown: false,
       }}
     >
@@ -16,9 +18,10 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Home",
-          tabBarIcon: ({ color }) => (
-            <MaterialIcons color={color} size={28} name={"home"} />
-          ),
+          tabBarIcon: ({ color, focused }) => {
+            console.log("Rendering Home Icon with color:", color, focused);
+            return <MaterialIcons color={color} size={28} name={"home"} />;
+          },
         }}
       />
 
@@ -44,3 +47,5 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
+export default TabLayout;

@@ -6,6 +6,7 @@ const darkColors: ThemeColorsType = {
   background: "#121212",
   text: "#FFFFFF",
   border: "#272727",
+  card: "#1E1E1E",
 };
 
 export { darkColors };
