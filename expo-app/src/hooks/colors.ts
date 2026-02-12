@@ -1,7 +1,10 @@
 import { darkColors } from "@/constants/colors/darkColors";
 import { lightColors } from "@/constants/colors/lightColors";
 import { store } from "@/redux/store";
-import { ThemeType, updateThemeAction } from "@/redux/themeSlice/themeSlice";
+import {
+  ThemeTypeEnum,
+  updateThemeAction,
+} from "@/redux/themeSlice/themeSlice";
 import { useMemo } from "react";
 import { useColorScheme } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,13 +18,13 @@ const useColors = () => {
   const systemTheme = useColorScheme();
 
   const colors = useMemo(() => {
-    if (theme === "light") {
+    if (theme === ThemeTypeEnum.Light) {
       return lightColors;
     }
-    if (theme === "dark") {
+    if (theme === ThemeTypeEnum.Dark) {
       return darkColors;
     }
-    if (theme === "system") {
+    if (theme === ThemeTypeEnum.System) {
       return systemTheme === "dark" ? darkColors : lightColors;
     }
     return darkColors;
@@ -30,10 +33,10 @@ const useColors = () => {
   return colors;
 };
 
-const useUpdateTheme = (newTheme: ThemeType) => {
+const useUpdateTheme = () => {
   const dispatch = useDispatch();
 
-  const updateTheme = () => {
+  const updateTheme = (newTheme: ThemeTypeEnum) => {
     dispatch(updateThemeAction(newTheme));
   };
 
