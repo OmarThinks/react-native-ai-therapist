@@ -1,15 +1,26 @@
 import { useColors } from "@/hooks/colors";
 import {
   ThemeTypeEnum,
+  updateFontSizeAction,
   updateThemeAction,
 } from "@/redux/settingsSlice/settingsSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { defaultValues } from "@/constants/defaultValues";
 
 const Settings = () => {
   const colors = useColors();
+
+  const fontSize = useAppSelector((state) => state.settings.fontSize);
+
+  const dispatch = useAppDispatch();
+
+  const updateFontSize = (newFontSize: number) => {
+    dispatch(updateFontSizeAction(newFontSize));
+  };
 
   return (
     <SafeAreaView
@@ -19,20 +30,84 @@ const Settings = () => {
       <ScrollView
         contentContainerStyle={{ alignSelf: "stretch", flex: 1, padding: 16 }}
       >
-        <Text
-          className=" text-[32px] font-semibold"
-          style={{ color: colors.text }}
-        >
-          Theme:
-        </Text>
+        <Title text="Theme:" />
 
-        <View className="gap-4 mt-4 self-stretch">
+        <View className="gap-4 self-stretch">
           <ThemeSelectorCard themeType={ThemeTypeEnum.Light} text="Light" />
           <ThemeSelectorCard themeType={ThemeTypeEnum.Dark} text="Dark" />
           <ThemeSelectorCard themeType={ThemeTypeEnum.System} text="System" />
         </View>
+
+        <HR />
+
+        <Title text="Font Size:" />
+
+        <Text
+          className=" self-stretch text-center mb-4 font-semibold"
+          style={{ color: colors.text, fontSize }}
+        >
+          {fontSize}
+        </Text>
+
+        <View className=" self-stretch flex-row items-start justify-between gap-5">
+          <FontSizeChangeButton
+            iconName="remove"
+            onPress={() => updateFontSize(fontSize - 1)}
+          />
+          <FontSizeChangeButton
+            iconName="refresh"
+            onPress={() => updateFontSize(defaultValues.fontSize)}
+          />
+          <FontSizeChangeButton
+            iconName="add"
+            onPress={() => updateFontSize(fontSize + 1)}
+          />
+        </View>
+
+        <HR />
       </ScrollView>
     </SafeAreaView>
+  );
+};
+
+const FontSizeChangeButton = ({
+  onPress,
+  iconName,
+}: {
+  iconName: keyof typeof MaterialIcons.glyphMap;
+  onPress: () => void;
+}) => {
+  const colors = useColors();
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      className="p-2 rounded flex-1 justify-center items-center py-5"
+      style={{ backgroundColor: colors.primary }}
+    >
+      <MaterialIcons name={iconName} size={44} color={colors.background} />
+    </TouchableOpacity>
+  );
+};
+
+const HR = () => {
+  const colors = useColors();
+  return (
+    <View
+      className=" h-[2px] self-stretch my-8"
+      style={{ backgroundColor: colors.border }}
+    />
+  );
+};
+
+const Title = ({ text }: { text: string }) => {
+  const colors = useColors();
+  return (
+    <Text
+      className=" text-[32px] font-semibold mb-4"
+      style={{ color: colors.text }}
+    >
+      {text}
+    </Text>
   );
 };
 
