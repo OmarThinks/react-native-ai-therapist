@@ -10,9 +10,10 @@ import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { defaultValues } from "@/constants/defaultValues";
+import Slider from "@react-native-community/slider";
 
-const maxFontSize = 100;
 const minFontSize = 5;
+const maxFontSize = 70;
 
 const Settings = () => {
   const colors = useColors();
@@ -48,32 +49,45 @@ const Settings = () => {
 
         <Title text="Font Size:" />
 
-        <Text
-          className=" self-stretch text-center mb-4 font-semibold"
-          style={{ color: colors.text, fontSize }}
-        >
-          {fontSize}
-        </Text>
+        <View className=" self-stretch gap-4">
+          <Text
+            className=" self-stretch text-center font-semibold"
+            style={{ color: colors.text, fontSize }}
+          >
+            {fontSize}
+          </Text>
+          <Slider
+            style={{ height: 40, alignSelf: "stretch" }}
+            minimumValue={minFontSize}
+            maximumValue={maxFontSize}
+            minimumTrackTintColor={colors.primary}
+            maximumTrackTintColor={colors.border}
+            onSlidingComplete={(newFontSize) => {
+              updateFontSize(parseInt(newFontSize.toString()));
+            }}
+            step={1}
+            value={fontSize}
+            thumbTintColor={colors.secondary}
+          />
 
-        <View className=" self-stretch flex-row items-start justify-between gap-5">
-          <FontSizeChangeButton
-            iconName="remove"
-            onPress={() => updateFontSize(fontSize - 1)}
-            disabled={fontSize <= minFontSize}
-          />
-          <FontSizeChangeButton
-            iconName="refresh"
-            onPress={() => updateFontSize(defaultValues.fontSize)}
-            disabled={false}
-          />
-          <FontSizeChangeButton
-            iconName="add"
-            onPress={() => updateFontSize(fontSize + 1)}
-            disabled={fontSize >= maxFontSize}
-          />
+          <View className=" self-stretch flex-row items-start justify-between gap-5">
+            <FontSizeChangeButton
+              iconName="remove"
+              onPress={() => updateFontSize(fontSize - 1)}
+              disabled={fontSize <= minFontSize}
+            />
+            <FontSizeChangeButton
+              iconName="refresh"
+              onPress={() => updateFontSize(defaultValues.fontSize)}
+              disabled={false}
+            />
+            <FontSizeChangeButton
+              iconName="add"
+              onPress={() => updateFontSize(fontSize + 1)}
+              disabled={fontSize >= maxFontSize}
+            />
+          </View>
         </View>
-
-        <HR />
       </ScrollView>
     </SafeAreaView>
   );
