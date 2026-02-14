@@ -2,6 +2,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AsyncStorageKeysEnum } from "@/constants/AsyncStorageKeysEnum";
+import { defaultValues } from "@/constants/defaultValues";
 
 enum ThemeTypeEnum {
   Light = "light",
@@ -11,10 +12,12 @@ enum ThemeTypeEnum {
 
 interface ThemeState {
   theme: ThemeTypeEnum;
+  fontSize: number;
 }
 
 const initialState: ThemeState = {
   theme: ThemeTypeEnum.Dark,
+  fontSize: defaultValues.fontSize,
 };
 
 const settingsSlice = createSlice({
@@ -25,11 +28,18 @@ const settingsSlice = createSlice({
       state.theme = action.payload;
       AsyncStorage.setItem(AsyncStorageKeysEnum.THEME, action.payload);
     },
+    updateFontSizeAction: (state, action: PayloadAction<number>) => {
+      state.fontSize = action.payload;
+      AsyncStorage.setItem(
+        AsyncStorageKeysEnum.FONT_SIZE,
+        action.payload.toString(),
+      );
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-const { updateThemeAction } = settingsSlice.actions;
+const { updateThemeAction, updateFontSizeAction } = settingsSlice.actions;
 
-export { settingsSlice, updateThemeAction };
+export { settingsSlice, updateThemeAction, updateFontSizeAction };
 export { ThemeTypeEnum };
