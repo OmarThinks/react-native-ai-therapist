@@ -11,6 +11,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { defaultValues } from "@/constants/defaultValues";
 
+const maxFontSize = 100;
+const minFontSize = 5;
+
 const Settings = () => {
   const colors = useColors();
 
@@ -19,6 +22,9 @@ const Settings = () => {
   const dispatch = useAppDispatch();
 
   const updateFontSize = (newFontSize: number) => {
+    if (newFontSize < minFontSize || newFontSize > maxFontSize) {
+      return;
+    }
     dispatch(updateFontSizeAction(newFontSize));
   };
 
@@ -53,14 +59,17 @@ const Settings = () => {
           <FontSizeChangeButton
             iconName="remove"
             onPress={() => updateFontSize(fontSize - 1)}
+            disabled={fontSize <= minFontSize}
           />
           <FontSizeChangeButton
             iconName="refresh"
             onPress={() => updateFontSize(defaultValues.fontSize)}
+            disabled={false}
           />
           <FontSizeChangeButton
             iconName="add"
             onPress={() => updateFontSize(fontSize + 1)}
+            disabled={fontSize >= maxFontSize}
           />
         </View>
 
@@ -73,16 +82,19 @@ const Settings = () => {
 const FontSizeChangeButton = ({
   onPress,
   iconName,
+  disabled,
 }: {
   iconName: keyof typeof MaterialIcons.glyphMap;
   onPress: () => void;
+  disabled: boolean;
 }) => {
   const colors = useColors();
   return (
     <TouchableOpacity
       onPress={onPress}
-      className="p-2 rounded flex-1 justify-center items-center py-5"
-      style={{ backgroundColor: colors.primary }}
+      className="p-2 rounded flex-1 justify-center items-center py-3"
+      style={{ backgroundColor: disabled ? colors.border : colors.primary }}
+      disabled={disabled}
     >
       <MaterialIcons name={iconName} size={44} color={colors.background} />
     </TouchableOpacity>
