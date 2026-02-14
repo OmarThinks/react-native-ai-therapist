@@ -1,6 +1,6 @@
 enum AsyncStorageKeysEnum {
-    THEME = "@theme",
+  THEME = "@theme",
+  FONT_SIZE = "@font_size",
 }
-
 
 export { AsyncStorageKeysEnum };
