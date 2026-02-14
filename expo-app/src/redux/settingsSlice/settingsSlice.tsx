@@ -9,28 +9,27 @@ enum ThemeTypeEnum {
   System = "system",
 }
 
-
 interface ThemeState {
-  value: ThemeTypeEnum;
+  theme: ThemeTypeEnum;
 }
 
 const initialState: ThemeState = {
-  value: ThemeTypeEnum.Dark,
+  theme: ThemeTypeEnum.Dark,
 };
 
-const themeSlice = createSlice({
-  name: "theme",
+const settingsSlice = createSlice({
+  name: "settings",
   initialState,
   reducers: {
     updateThemeAction: (state, action: PayloadAction<ThemeTypeEnum>) => {
-      state.value = action.payload;
+      state.theme = action.payload;
       AsyncStorage.setItem(AsyncStorageKeysEnum.THEME, action.payload);
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-const { updateThemeAction } = themeSlice.actions;
+const { updateThemeAction } = settingsSlice.actions;
 
-export { themeSlice, updateThemeAction };
+export { settingsSlice, updateThemeAction };
 export { ThemeTypeEnum };

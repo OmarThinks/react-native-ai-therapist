@@ -1,6 +1,9 @@
 import { useColors } from "@/hooks/colors";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
-import { ThemeTypeEnum, updateThemeAction } from "@/redux/themeSlice/themeSlice";
+import {
+  ThemeTypeEnum,
+  updateThemeAction,
+} from "@/redux/settingsSlice/settingsSlice";
 import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -39,7 +42,7 @@ const ThemeSelectorCard = ({
   themeType: ThemeTypeEnum;
   text: string;
 }) => {
-  const activeTheme = useAppSelector((state) => state.theme.value);
+  const activeTheme = useAppSelector((state) => state.settings.theme);
 
   const isActive = activeTheme === themeType;
 
@@ -73,7 +76,11 @@ const IsActiveRadioButton = ({ isActive }: { isActive: boolean }) => {
   return (
     <View
       className="w-[24px] h-[24px] border-[1] items-center justify-center"
-      style={{ borderColor: isActive? colors.primary: colors.border, borderWidth: 2, borderRadius: 30 }}
+      style={{
+        borderColor: isActive ? colors.primary : colors.border,
+        borderWidth: 2,
+        borderRadius: 30,
+      }}
     >
       {isActive && (
         <View

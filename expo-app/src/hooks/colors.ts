@@ -4,16 +4,16 @@ import { RootState, store, useAppSelector } from "@/redux/store";
 import {
   ThemeTypeEnum,
   updateThemeAction,
-} from "@/redux/themeSlice/themeSlice";
+} from "@/redux/settingsSlice/settingsSlice";
 import { useMemo } from "react";
 import { useColorScheme } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
 const themeSelector = (state: ReturnType<typeof store.getState>) =>
-  state.theme.value;
+  state.settings.theme;
 
 const useColors = () => {
-  const theme = useSelector((state: RootState) => state.theme.value);
+  const theme = useSelector((state: RootState) => state.settings.theme);
 
   const systemTheme = useColorScheme();
 

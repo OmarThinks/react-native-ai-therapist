@@ -1,5 +1,5 @@
 import { AsyncStorageKeysEnum } from "@/constants/AsyncStorageKeysEnum";
-import { ThemeTypeEnum } from "@/redux/themeSlice/themeSlice";
+import { ThemeTypeEnum } from "@/redux/settingsSlice/settingsSlice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 import { useUpdateTheme } from "./colors";

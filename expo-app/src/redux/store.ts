@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
-import { themeSlice } from "./themeSlice/themeSlice";
+import { settingsSlice } from "./settingsSlice/settingsSlice";
 
 const store = configureStore({
   reducer: {
-    [themeSlice.name]: themeSlice.reducer,
+    [settingsSlice.name]: settingsSlice.reducer,
   },
 });
 
