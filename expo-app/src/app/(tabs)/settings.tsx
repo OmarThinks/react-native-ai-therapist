@@ -1,3 +1,4 @@
+import { defaultValues } from "@/constants/defaultValues";
 import { useColors } from "@/hooks/colors";
 import {
   ThemeTypeEnum,
@@ -5,12 +6,11 @@ import {
   updateThemeAction,
 } from "@/redux/settingsSlice/settingsSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import Slider from "@react-native-community/slider";
 import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { defaultValues } from "@/constants/defaultValues";
-import Slider from "@react-native-community/slider";
 
 const minFontSize = 5;
 const maxFontSize = 70;
