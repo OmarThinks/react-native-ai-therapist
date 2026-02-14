@@ -1,10 +1,10 @@
 import { darkColors } from "@/constants/colors/darkColors";
 import { lightColors } from "@/constants/colors/lightColors";
-import { RootState, store, useAppSelector } from "@/redux/store";
 import {
   ThemeTypeEnum,
   updateThemeAction,
 } from "@/redux/settingsSlice/settingsSlice";
+import { RootState, store } from "@/redux/store";
 import { useMemo } from "react";
 import { useColorScheme } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -66,4 +66,4 @@ const useIsThemeLightOrDark = () => {
   return isLightOrDark;
 };
 
-export { useColors, useUpdateTheme, useIsThemeLightOrDark };
+export { useColors, useIsThemeLightOrDark, useUpdateTheme };

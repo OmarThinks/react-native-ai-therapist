@@ -1,4 +1,5 @@
 import { useColors } from "@/hooks/colors";
+import { useAppSelector } from "@/redux/store";
 import { UIMessage } from "ai";
 import React from "react";
 import { Text, View } from "react-native";
@@ -8,6 +9,8 @@ const ChatMessageDisplay = ({ message }: { message: UIMessage }) => {
 
   const backgroundColor =
     message.role === "user" ? colors.primary : colors.card;
+
+  const fontSize = useAppSelector((state) => state.settings.fontSize);
 
   return (
     <View
@@ -31,8 +34,8 @@ const ChatMessageDisplay = ({ message }: { message: UIMessage }) => {
               return (
                 <Text
                   key={`${message.id}-${i}`}
-                  style={{ color: colors.text }}
-                  className=" font-semibold text-[20px]"
+                  style={{ color: colors.text, fontSize }}
+                  className=" font-semibold"
                 >
                   {part.text}
                 </Text>

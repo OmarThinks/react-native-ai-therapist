@@ -3,10 +3,10 @@ import {
   ThemeTypeEnum,
   updateFontSizeAction,
 } from "@/redux/settingsSlice/settingsSlice";
+import { useAppDispatch } from "@/redux/store";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 import { useUpdateTheme } from "./colors";
-import { useAppDispatch } from "@/redux/store";
 
 const useInitializeApp = () => {
   const [isColorInitialized, setIsColorInitialized] = useState(false);

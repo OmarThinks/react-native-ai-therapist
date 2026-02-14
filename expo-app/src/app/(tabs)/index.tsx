@@ -1,5 +1,6 @@
 import ChatMessageDisplay from "@/components/ChatMessageDisplay";
 import { useColors } from "@/hooks/colors";
+import { useAppSelector } from "@/redux/store";
 import { useChat } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
 import { DefaultChatTransport } from "ai";
@@ -10,6 +11,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 function App() {
   const [input, setInput] = useState("");
+
   const {
     messages: _messages,
     error,
@@ -52,6 +54,8 @@ function App() {
 
   const colors = useColors();
 
+  const fontSize = useAppSelector((state) => state.settings.fontSize);
+
   if (error) return <Text>{error.message}</Text>;
 
   return (
@@ -75,6 +79,7 @@ function App() {
               borderWidth: 1,
               borderColor: colors.border,
               borderRadius: 4,
+              fontSize,
             }}
             placeholder="Say something..."
             placeholderTextColor={colors.grey}

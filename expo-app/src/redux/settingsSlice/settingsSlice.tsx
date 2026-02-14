@@ -1,8 +1,8 @@
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { createSlice } from "@reduxjs/toolkit";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AsyncStorageKeysEnum } from "@/constants/AsyncStorageKeysEnum";
 import { defaultValues } from "@/constants/defaultValues";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 enum ThemeTypeEnum {
   Light = "light",
@@ -41,5 +41,9 @@ const settingsSlice = createSlice({
 // Action creators are generated for each case reducer function
 const { updateThemeAction, updateFontSizeAction } = settingsSlice.actions;
 
-export { settingsSlice, updateThemeAction, updateFontSizeAction };
-export { ThemeTypeEnum };
+export {
+  settingsSlice,
+  ThemeTypeEnum,
+  updateFontSizeAction,
+  updateThemeAction,
+};

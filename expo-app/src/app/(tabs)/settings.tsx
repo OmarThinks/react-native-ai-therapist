@@ -1,15 +1,16 @@
 import { useColors } from "@/hooks/colors";
-import { useAppDispatch, useAppSelector } from "@/redux/store";
 import {
   ThemeTypeEnum,
   updateThemeAction,
 } from "@/redux/settingsSlice/settingsSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Settings = () => {
   const colors = useColors();
+
   return (
     <SafeAreaView
       className="flex-1 self-stretch "
