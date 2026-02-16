@@ -1,5 +1,6 @@
 import ChatMessageDisplay from "@/components/ChatMessageDisplay";
 import { useColors } from "@/hooks/colors";
+import { useGeminiLiveAudio } from "@/hooks/useGeminiLiveAudio";
 import { useAppSelector } from "@/redux/store";
 import { useChat } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
@@ -11,6 +12,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 function App() {
   const [input, setInput] = useState("");
+
+  const a = useGeminiLiveAudio();
 
   const {
     messages: _messages,
