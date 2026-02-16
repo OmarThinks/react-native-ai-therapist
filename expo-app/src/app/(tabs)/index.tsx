@@ -22,7 +22,7 @@ function App() {
       api: "http://10.0.2.2:3000/api/chat",
     }),
     onError: (error) => console.error(error, "ERROR"),
-    messages: [
+    /*messages: [
       {
         parts: [
           {
@@ -47,7 +47,7 @@ function App() {
           },
         ],
       },
-    ],
+    ],*/
   });
 
   const messages: UIMessage[] = _messages;

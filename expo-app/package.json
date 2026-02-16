@@ -13,6 +13,7 @@
   "dependencies": {
     "@ai-sdk/react": "^3.0.85",
     "@expo/vector-icons": "^15.0.3",
+    "@google/genai": "^1.41.0",
     "@react-native-async-storage/async-storage": "^2.2.0",
     "@react-native-community/slider": "^5.1.2",
     "@react-navigation/bottom-tabs": "^7.4.0",
