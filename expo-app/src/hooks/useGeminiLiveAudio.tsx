@@ -106,7 +106,7 @@ const useGeminiLiveAudio = () => {
         urlParams.append("access_token", key.accessToken);
       }
 
-      const webSocketString = `wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContentConstrained?${urlParams.toString()}`;
+      const webSocketString = `wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContentConstrained?${urlParams.toString()}`;
 
       //console.log("webSocketString", webSocketString);
 
@@ -243,6 +243,15 @@ const useGeminiLiveAudio = () => {
       updateIsSetupComplete,
     ],
   );
+
+  return {
+    connectSocket,
+    isConnected,
+    isSetupComplete,
+    turnComplete,
+    sendMessage,
+    isSocketConnecting,
+  };
 };
 
 export { useGeminiLiveAudio };
