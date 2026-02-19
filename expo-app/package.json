@@ -13,6 +13,7 @@
     "buildAndroidLocallyAPK": "eas build --platform android --profile productionApk --local",
     "clean": "rm -r node_modules android package-lock.json .expo",
     "prebuild": "npm i --force && npx expo prebuild --platform android",
+    "prebuildNew": "npm i --force && npx expo prebuild --platform android --clean",
     "android": "expo run:android"
   },
   "dependencies": {
