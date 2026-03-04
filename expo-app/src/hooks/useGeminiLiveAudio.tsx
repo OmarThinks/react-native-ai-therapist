@@ -11,7 +11,7 @@ import { combineBase64ArrayList } from "@/utils/audio/combineBase64ArrayList";
 const webSocketUrl =
   "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent";
 
-console.log(process.env.EXPO_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY);
+console.log("API Key", process.env.EXPO_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY);
 
 const useGeminiLiveAudio = () => {
   const innerResponseQueue = useRef<Part[]>([]);
@@ -34,7 +34,7 @@ const useGeminiLiveAudio = () => {
     useCallback(() => {}, []);
   const onUserInterruption: () => void = useCallback(() => {}, []);
   const onSocketError: (error: unknown) => void = useCallback((error) => {
-    console.log("WebSocket error:", error);
+    console.log("WebSocket error:", JSON.stringify(error, null, 2));
   }, []);
 
   const onSocketClose: (reason: unknown) => void = useCallback(
@@ -82,13 +82,10 @@ const useGeminiLiveAudio = () => {
   const connectSocket = useCallback(
     (
       key:
+        | { apiKey: string; accessToken: undefined }
         | {
-            apiKey: string;
-            accessToken: never;
-          }
-        | {
+            apiKey: undefined;
             accessToken: string;
-            apiKey: never;
           },
     ) => {
       setIsSocketConnecting(true);
@@ -214,7 +211,7 @@ const useGeminiLiveAudio = () => {
       };
       socketRef.current.onerror = (error) => {
         setIsSocketConnecting(false);
-        console.log("WebSocket error:", error);
+        console.log("WebSocket error:", JSON.stringify(error, null, 2));
         //console.debug("Error:", error);
         onSocketError?.(error);
       };
