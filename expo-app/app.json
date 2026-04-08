@@ -39,7 +39,8 @@
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      "react-native-audio-api"
     ],
     "experiments": {
       "typedRoutes": true,
