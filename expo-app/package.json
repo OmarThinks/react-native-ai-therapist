@@ -61,5 +61,10 @@
     "eslint-config-expo": "~10.0.0",
     "typescript": "~5.9.2"
   },
+  "overrides": {
+    "@ai-sdk/react": {
+      "react": "$react"
+    }
+  },
   "private": true
 }
