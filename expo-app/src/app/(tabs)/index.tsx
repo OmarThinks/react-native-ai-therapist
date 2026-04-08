@@ -2,6 +2,7 @@ import ChatMessageDisplay from "@/components/ChatMessageDisplay";
 import { useColors } from "@/hooks/colors";
 import { useGeminiLiveAudio } from "@/hooks/useGeminiLiveAudio";
 import { useAppSelector } from "@/redux/store";
+import { generateAPIUrl } from "@/utils/generateApiUrl";
 import { useChat } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
 import { DefaultChatTransport } from "ai";
@@ -22,7 +23,8 @@ function App() {
   } = useChat({
     transport: new DefaultChatTransport({
       fetch: expoFetch as unknown as typeof globalThis.fetch,
-      api: "http://10.0.2.2:3000/api/chat",
+      //api: "http://10.0.2.2:3000/api/chat",
+      api: generateAPIUrl("/api/chat"),
     }),
     onError: (error) => console.error(error, "ERROR"),
     /*messages: [

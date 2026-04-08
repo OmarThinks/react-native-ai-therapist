@@ -1,4 +1,5 @@
 import { useColors } from "@/hooks/colors";
+import "@/utils/polyfills";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Tabs } from "expo-router";
 
