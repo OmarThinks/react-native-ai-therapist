@@ -21,9 +21,8 @@ const Voice = () => {
         onPress={() => {
           connectSocket({
             /*apiKey: process.env
-              .EXPO_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY as string,*/
-            accessToken: process.env
-              .EXPO_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY as string,
+              .EXPO_PUBLIC_GOOGLE_API_KEY as string,*/
+            accessToken: process.env.EXPO_PUBLIC_GOOGLE_API_KEY as string,
             apiKey: undefined,
           });
         }}

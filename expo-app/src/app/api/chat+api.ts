@@ -4,6 +4,7 @@ import { convertToModelMessages, streamText, UIMessage } from "ai";
 const googleAI = createGoogleGenerativeAI({
   apiKey: process.env.EXPO_PUBLIC_GOOGLE_API_KEY,
 });
+console.log("Google API Key:", process.env.EXPO_PUBLIC_GOOGLE_API_KEY);
 
 async function POST(req: Request) {
   const { messages }: { messages: UIMessage[] } = await req.json();

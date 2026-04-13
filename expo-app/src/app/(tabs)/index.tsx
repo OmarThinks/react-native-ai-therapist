@@ -11,6 +11,8 @@ import { useState } from "react";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+console.log("Google API Key:", process.env.EXPO_PUBLIC_GOOGLE_API_KEY);
+
 function App() {
   const [input, setInput] = useState("");
 

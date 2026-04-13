@@ -11,7 +11,7 @@ import { combineBase64ArrayList } from "@/utils/audio/combineBase64ArrayList";
 const webSocketUrl =
   "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent";
 
-console.log("API Key", process.env.EXPO_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY);
+console.log("API Key", process.env.EXPO_PUBLIC_GOOGLE_API_KEY);
 
 const useGeminiLiveAudio = () => {
   const innerResponseQueue = useRef<Part[]>([]);
