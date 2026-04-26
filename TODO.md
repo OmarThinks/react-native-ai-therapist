@@ -2,16 +2,19 @@
 
 ✅
 
-- Make the font Size editable (Can be done later)
+# Link with Next JS app:
 
-# Just make the next app useless now:
+- Link with Next app instead of expo app (Just change the link)
+- Hide the voice tab
+- screenshots (document)
+- Video
+- Upload
 
-- Create an endpoint in the expo app to read the text
-- The env variable: API token
-- Link the text screen to this local endpoint
--
+# Part 2
 
-# Make the app link with the google api With the token:
+## Make the app link with the google api With the token:
 
+- Upgrade expo depedencies
+- Upgrade next app
 - Read the token in the expo app
 -

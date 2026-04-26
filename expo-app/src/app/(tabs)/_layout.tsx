@@ -24,7 +24,15 @@ function TabLayout() {
           },
         }}
       />
-
+      <Tabs.Screen
+        name="voice"
+        options={{
+          title: "Voice",
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons color={color} size={28} name={"multitrack-audio"} />
+          ),
+        }}
+      />
       <Tabs.Screen
         name="settings"
         options={{

@@ -15,8 +15,12 @@ const Voice = () => {
       className="flex-1 self-stretch "
       style={{ backgroundColor: colors.background }}
     >
-      <Text>{isConnected ? "Connected" : "Disconnected"}</Text>
-      <Text>{isSocketConnecting ? "Connecting..." : "Not connecting"}</Text>
+      <Text style={{ color: colors.text }}>
+        {isConnected ? "Connected" : "Disconnected"}
+      </Text>
+      <Text style={{ color: colors.text }}>
+        {isSocketConnecting ? "Connecting..." : "Not connecting"}
+      </Text>
       <Button
         onPress={() => {
           connectSocket({
