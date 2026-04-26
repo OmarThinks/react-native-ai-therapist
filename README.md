@@ -2,6 +2,8 @@
 
 AI Therapist with React Native
 
+<img src="./media/appIcon.png" width=350 />
+
 <img src="./media/01.png" width=350 />
 
 <img src="./media/02.png" width=350 />
