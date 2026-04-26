@@ -103,7 +103,7 @@ function App() {
             <Text
               style={{
                 color: colors.text,
-                fontSize: 36,
+                fontSize: 50,
                 fontWeight: "bold",
               }}
             >
@@ -112,7 +112,7 @@ function App() {
             <Text
               style={{
                 color: colors.text,
-                fontSize: 36,
+                fontSize: 50,
                 fontWeight: "bold",
               }}
             >
