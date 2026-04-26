@@ -32,7 +32,7 @@ npm run dev
 
 - In another app, while the next app is open, run the expo app:
 
-```
+```bash
 cd expo-app
 npm start
 ```

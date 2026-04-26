@@ -15,6 +15,7 @@ import {
   View,
   Platform,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -74,8 +75,6 @@ function App() {
   const fontSize = useAppSelector((state) => state.settings.fontSize);
 
   if (error) return <Text>{error.message}</Text>;
-
-  console.log(JSON.stringify(messages, null, 2));
 
   return (
     <SafeAreaView

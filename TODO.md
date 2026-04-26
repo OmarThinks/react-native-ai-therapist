@@ -6,7 +6,7 @@
 
 - Link with Next app instead of expo app (Just change the link) ✅
 - Hide the voice tab ✅
-- screenshots (document)
+- screenshots (document) ✅
 - Video
 - Upload
 
