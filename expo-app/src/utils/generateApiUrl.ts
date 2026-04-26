@@ -1,11 +1,13 @@
 import Constants from "expo-constants";
 
 const generateAPIUrl = (relativePath: string) => {
-  //const origin = Constants.experienceUrl.replace("exp://", "http://");
-  const origin =
+  const origin = Constants.experienceUrl.replace("exp://", "http://");
+  const origin2 =
     "http://" + Constants?.manifest2?.extra?.expoClient?.hostUri ||
     "localhost:3000";
 
+  console.log(JSON.stringify(Constants, null, 2));
+  console.log(origin, origin2);
   const path = relativePath.startsWith("/") ? relativePath : `/${relativePath}`;
 
   if (process.env.NODE_ENV === "development") {
