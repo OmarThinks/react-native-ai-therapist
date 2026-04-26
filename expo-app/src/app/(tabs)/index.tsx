@@ -89,13 +89,37 @@ function App() {
           ))}
         </ScrollView>*/}
 
-        <FlatList
-          data={messages}
-          renderItem={(item) => (
-            <ChatMessageDisplay message={item.item} key={item.item.id} />
-          )}
-          keyExtractor={(message) => message.id}
-        />
+        {messages.length > 0 ? (
+          <FlatList
+            data={messages}
+            renderItem={(item) => (
+              <ChatMessageDisplay message={item.item} key={item.item.id} />
+            )}
+            keyExtractor={(message) => message.id}
+            className=" flex-1 self-stretch"
+          />
+        ) : (
+          <View className=" self-stretch flex-1 justify-center items-center">
+            <Text
+              style={{
+                color: colors.text,
+                fontSize: 36,
+                fontWeight: "bold",
+              }}
+            >
+              AI
+            </Text>
+            <Text
+              style={{
+                color: colors.text,
+                fontSize: 36,
+                fontWeight: "bold",
+              }}
+            >
+              Therapist
+            </Text>
+          </View>
+        )}
 
         <View style={{ marginTop: 8 }}>
           <TextInput
