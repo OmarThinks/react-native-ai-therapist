@@ -4,8 +4,8 @@
 
 # Link with Next JS app:
 
-- Link with Next app instead of expo app (Just change the link)
-- Hide the voice tab
+- Link with Next app instead of expo app (Just change the link) ✅
+- Hide the voice tab ✅
 - screenshots (document)
 - Video
 - Upload

@@ -8,7 +8,14 @@ import type { UIMessage } from "ai";
 import { DefaultChatTransport } from "ai";
 import { fetch as expoFetch } from "expo/fetch";
 import { useState } from "react";
-import { ScrollView, Text, TextInput, View } from "react-native";
+import {
+  ScrollView,
+  Text,
+  TextInput,
+  View,
+  Platform,
+  FlatList,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 //console.log("Google API Key:", process.env.EXPO_PUBLIC_GOOGLE_API_KEY);
@@ -25,8 +32,11 @@ function App() {
   } = useChat({
     transport: new DefaultChatTransport({
       fetch: expoFetch as unknown as typeof globalThis.fetch,
-      //api: "http://10.0.2.2:3000/api/chat",
-      api: generateAPIUrl("/api/chat"),
+      api:
+        Platform.OS === "web"
+          ? "http://localhost:3000/api/chat"
+          : "http://10.0.2.2:3000/api/chat",
+      //api: generateAPIUrl("/api/chat"),
     }),
     onError: (error) => console.error(error, "ERROR"),
     /*messages: [
@@ -65,17 +75,27 @@ function App() {
 
   if (error) return <Text>{error.message}</Text>;
 
+  console.log(JSON.stringify(messages, null, 2));
+
   return (
     <SafeAreaView
       className=" self-stretch flex-1"
       style={{ backgroundColor: colors.background }}
     >
       <View className=" flex-1 px-2 self-stretch">
-        <ScrollView className=" flex-1 self-stretch" style={{ gap: 8 }}>
+        {/*<ScrollView className=" flex-1 self-stretch" style={{ gap: 8 }}>
           {messages.map((message) => (
             <ChatMessageDisplay key={message.id} message={message} />
           ))}
-        </ScrollView>
+        </ScrollView>*/}
+
+        <FlatList
+          data={messages}
+          renderItem={(item) => (
+            <ChatMessageDisplay message={item.item} key={item.item.id} />
+          )}
+          keyExtractor={(message) => message.id}
+        />
 
         <View style={{ marginTop: 8 }}>
           <TextInput
